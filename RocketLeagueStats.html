@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Rocket League Stats</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+body {
+    font-family: fantasy;
+}
+
+h1,
+h2 {
+    text-align: center;
+    color: black;
+}
+
+.container {
+    max-width: 1060px;
+    margin: 10px auto;
+}
+
+.container2 {
+    max-width: 300px;
+    margin: 10px auto;
+}
+
+iframe {
+    padding-bottom: 40px;
+    width: 95%;
+    height: 500px;
+    border: 5px solid blue;
+}
+
+.column {
+    float: left;
+    padding: 10px;
+    height: 1000px; /* Should be removed. Only for demonstration */
+}
+
+.left, .right {
+    width: 38%;
+}
+
+.middle {
+    width: 20%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#div_iframe2 {
+    height: 165px;
+    width: 71%;
+    overflow: hidden;
+}
+
+#div_iframe3 {
+    height: 165px;
+    width: 40%;
+    overflow: hidden;
+}
+
+#frame {
+    border: 0px;
+    width: 100%;
+    height: 1000%; /* 10x the div height to embrace the whole page */
+    margin-top: -1035px;
+    margin-left: -20px;
+}
+
+div.a {
+    position: relative;
+    width: 800px; /*was 800*/
+    height: 200px;
+}
+
+div.b {
+    position: absolute;
+    left: 0;
+    width: 300px;
+    height: 150px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+div.c {
+    position: absolute;
+    right: 0;
+    width: 300px;
+    height: 120px;
+}
+
+div.d {
+    position: absolute;
+    left: 750px;
+    width: 300px;
+    height: 150px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+div.e {
+    position: absolute;
+    left: 1300px;
+    width: 700px;
+    height: 150px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.white-box {
+    background-color: color: blue;
+    width: 2000x;
+    height: 300px;
+    margin-top: -150px;
+    color
+}
+<body>
+    <!-- partial:index.partial.html -->
+    <div>
+        <div class="a">
+            <div class="b">
+                <p style="position: absolute; left: 80%; font-size: 30px; margin-top: 10px;">2's</p>
+             </div>
+             <div class="d">
+                <p style="position: absolute; left: 80%; font-size: 30px; margin-top: 10px;">3's</p>
+             </div>
+             <div class="e">
+                <p style="position: absolute; left: 30%; font-size: 30px; margin-top: 10px;">tournament's</p>
+             </div>
+         </div>
+         <p id="personal"></p>
+     </div>
+        <!-- partial -->
+    <script>
+        // JavaScript source code
+const personalAccounts = [];
+const teamAccounts = [];
+
+account = { name: "Fortiethbuckle8", id: "76561198135636563", client: "steam" }; personalAccounts.push(account);
+account = { name: "Keyboardrebel", id: "76561198816114530", client: "steam" }; personalAccounts.push(account);
+account = { name: "Feedmemoi", id: "76561198363142506", client: "steam" }; personalAccounts.push(account);
+account = { name: "Keyboardxilo", id: "76561199043955764", client: "steam" }; personalAccounts.push(account);
+account = { name: "Meepmeepxilo", id: "76561199041429306", client: "steam" }; personalAccounts.push(account);
+account = { name: "XiloPlays", id: "76561199046539900", client: "steam" }; personalAccounts.push(account);
+account = { name: "meepPanther", id: "76561199054654929", client: "steam" }; personalAccounts.push(account);
+account = { name: "n7rocksss", id: "76561199058071833", client: "steam" }; personalAccounts.push(account);
+account = { name: "GENGAR Only", id: "GENGAR%20Only", client: "epic", email: "pantherhor6@gmail.com" }; personalAccounts.push(account);
+account = { name: "ItzMePeng", id: "ItzMePenguinooo", client: "epic", email: "pantherhor7@gmail.com" }; personalAccounts.push(account);
+account = { name: "ItzMeWuthy", id: "ItzMeWuthy", client: "epic", email: "pantherhor8@gmail.com" }; personalAccounts.push(account);
+account = { name: "ItzMeFir", id: "ItzMeFir", client: "epic", email: "pantherhor5@gmail.com" }; personalAccounts.push(account);
+account = { name: "ItzMeSubbb", id: "ItzMeSubbb", client: "epic", email: "pantherhoreu@gmail.com" }; personalAccounts.push(account);
+account = { name: "ItsWuthy2", id: "ItsWuthy2", client: "epic", email: "p.antherhoreu@gmail.com" }; personalAccounts.push(account);
+account = { name: "MeepPanther", id: "MeepPanther", client: "epic", email: "pa.ntherhoreu@gmail.com" }; personalAccounts.push(account);
+account = { name: "ItsZerosHero", id: "ItsZerosHero", client: "epic", email: "pan.therhoreu@gmail.com" }; personalAccounts.push(account);
+account = { name: "NickZero52", id: "NickZero52", client: "epic", email: "pant.herhoreu@gmail.com" }; personalAccounts.push(account);
+account = { name: "ItzZachyWacky", id: "ItzZachyWacky", client: "epic", email: "panth.erhoreu@gmail.com" }; personalAccounts.push(account);
+account = { name: "MannyDaGranny", id: "MannyDaGranny", client: "epic", email: "panthe.rhoreu@gmail.com" }; personalAccounts.push(account);
+
+function getStats(arrayAcc) {
+    var allStats = "";
+    for (index = 0; index < arrayAcc.length; index++) {
+        allStats += "<div class='a' style='margin-top: -150px;'><div class='b' id='div_iframe2'><iframe id='frame' src='https://rocketleague.tracker.network/rocket-league/profile/";
+        allStats += arrayAcc[index].client;
+        allStats += "/";
+        allStats += arrayAcc[index].id;
+        allStats += "/mmr?playlist=11'></iframe></div><div class='c'>";
+        allStats += "<p style='text-align:center; font-size: 30px; margin-top: 10px;'>";
+        allStats += arrayAcc[index].name;
+        allStats += "</p></div><div class='d' id='div_iframe2'><iframe id='frame' src='https://rocketleague.tracker.network/rocket-league/profile/";
+        allStats += arrayAcc[index].client;
+        allStats += "/";
+        allStats += arrayAcc[index].id;
+        allStats += "/mmr?playlist=13'></iframe></div><div class='e' id='div_iframe2'><iframe id='frame' src='https://rocketleague.tracker.network/rocket-league/profile/";
+        allStats += arrayAcc[index].client;
+        allStats += "/";
+        allStats += arrayAcc[index].id;
+        allStats += "/mmr?playlist=34'></iframe></div></div>";
+    }
+
+    allStats += "<div class='b' style='margin-top: -150px; width: 300px; height: 150px; border: 130px solid white;'><p></p></div><div class='d' style='margin-top: -150px; width: 300px; height: 150px; border: 130px solid white;'><p></p></div><div class='e' style='margin-top: -150px; width: 300px; height: 150px; border: 130px solid white;'><p></p></div>";
+    return allStats;
+}
+
+document.getElementById("personal").innerHTML = getStats(personalAccounts);
+    </script>
+
+</body>
+</html>

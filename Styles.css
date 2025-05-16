@@ -1,0 +1,305 @@
+
+﻿{
+    box-sizing: border-box;
+}
+
+video {
+    width: 100%;
+    height: auto;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+[class*="col-"] {
+    float: left;
+    margin-left: 0%;
+    margin-bottom: -1%;
+    padding: 0px;
+    width: 100%;
+    border-style: groove;
+    border-width: 0px;
+}
+
+@media only screen and (min-width: 400px) {
+    .col-p-1 {
+        width: 8.33%;
+    }
+
+    .col-p-2 {
+        width: 16.66%;
+    }
+
+    .col-p-3 {
+        width: 25%;
+    }
+
+    .col-p-4 {
+        width: 33.33%;
+    }
+
+    .col-p-5 {
+        width: 41.66%;
+    }
+
+    .col-p-6 {
+        width: 50%;
+    }
+
+    .col-p-7 {
+        width: 58.33%;
+    }
+
+    .col-p-8 {
+        width: 66.66%;
+    }
+
+    .col-p-9 {
+        width: 75%;
+    }
+
+    .col-p-10 {
+        width: 83.33%;
+    }
+
+    .col-p-11 {
+        width: 91.66%;
+    }
+
+    .col-p-12 {
+        width: 100%;
+    }
+
+    .right {
+        justify-content: center;
+    }
+
+    .left {
+        justify-content: center;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .col-m-1 {
+        width: 8.33%;
+    }
+
+    .col-m-2 {
+        width: 16.66%;
+    }
+
+    .col-m-3 {
+        width: 25%;
+    }
+
+    .col-m-4 {
+        width: 33.33%;
+    }
+
+    .col-m-5 {
+        width: 41.66%;
+    }
+
+    .col-m-6 {
+        width: 50%;
+    }
+
+    .col-m-7 {
+        width: 58.33%;
+    }
+
+    .col-m-8 {
+        width: 66.66%;
+    }
+
+    .col-m-9 {
+        width: 75%;
+    }
+
+    .col-m-10 {
+        width: 83.33%;
+    }
+
+    .col-m-11 {
+        width: 91.66%;
+    }
+
+    .col-m-12 {
+        width: 100%;
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    padding-bottom: 0px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media only screen and (min-width: 768px) {
+    .col-1 {
+        width: 8.33%;
+    }
+
+    .col-2 {
+        width: 16.66%;
+    }
+
+    .col-3 {
+        width: 25%;
+    }
+
+    .col-4 {
+        width: 33.33%;
+    }
+
+    .col-5 {
+        width: 41.66%;
+    }
+
+    .col-6 {
+        width: 50%;
+    }
+
+    .col-7 {
+        width: 58.33%;
+    }
+
+    .col-8 {
+        width: 66.66%;
+    }
+
+    .col-9 {
+        width: 75%;
+    }
+
+    .col-10 {
+        width: 83.33%;
+    }
+
+    .col-11 {
+        width: 91.66%;
+    }
+
+    .col-12 {
+        width: 100%;
+    }
+}
+
+header {
+    background-color: grey;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+body {
+    background-color: lavender;
+    font-family: sans-serif;
+}
+
+#container {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+nav {
+    text-align: center;
+    padding: 15px;
+}
+
+    nav a {
+        font-size: 1.5em;
+        color: white;
+        font-weight: 500;
+        background-color: grey;
+        padding: 10px 20px;
+        margin: 0px 0px;
+        border-radius: 20px;
+    }
+
+        nav a:hover {
+            background-color: lightgrey;
+            color: white;
+        }
+
+a {
+    color: black;
+}
+
+a:hover {
+    color: grey;
+}
+
+ul {
+    text-align: center;
+    list-style: none;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 35px;
+    height: 50px;
+}
+
+.right {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 0px;
+    height: 50px;
+}
+
+.left {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-left: 35px;
+    height: 50px;
+}
+
+.button {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.button1 {
+    background-color: grey;
+}
+/* Grey */
+#div_iframe2 {
+    height: 150px;
+    width: 100%;
+    overflow: hidden;
+}
+
+#div_iframe3 {
+    height: 165px;
+    width: 40%;
+    overflow: hidden;
+}
+
+#frame {
+    border: 0px;
+    width: 105%;
+    height: 1000%; /* 10x the div height to embrace the whole page */
+    margin-top: -1170px;
+    margin-left: -20px;
+}

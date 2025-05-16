@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>N7 Phantoms Team Stats</title>
+</head>
+<style>
+body {
+    font-family:fantasy;
+}
+
+h1,
+h2 {
+    text-align: center;
+    color: black;
+}
+
+.container {
+    max-width: 1060px;
+    margin: 10px auto;
+}
+
+.container2 {
+    max-width: 300px;
+    margin: 10px auto;
+}
+
+iframe {
+    padding-bottom: 40px;
+    width: 95%;
+    height: 500px;
+    border: 5px solid blue;
+}
+
+.column {
+  float: left;
+  padding: 10px;
+  height: 1000px; /* Should be removed. Only for demonstration */
+}
+
+.left, .right {
+  width: 38%;
+}
+
+.middle {
+  width: 20%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#div_iframe2 {
+  height: 165px;
+  width: 71%;
+  overflow: hidden;
+}
+
+#div_iframe3 {
+  height: 165px;
+  width: 40%;
+  overflow: hidden;
+}
+
+#frame {
+  border: 0px;
+  width: 100%;
+  height: 1000%;   /* 10x the div height to embrace the whole page */
+  margin-top: -1040px;
+  margin-left: -20px;
+}
+
+div.a {
+  position: relative;
+  width: 800px; /*was 800*/
+  height: 200px;
+}
+
+div.b {
+  position: absolute;
+  left: 0;
+  width: 300px;
+  height: 150px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+} 
+
+div.c {
+  position: absolute;
+  right: 0;  
+  width: 300px;
+  height: 120px;
+} 
+
+div.d {
+  position: absolute;
+  left: 750px;
+  width: 300px;
+  height: 150px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+} 
+
+div.e {
+  position: absolute;
+  left: 1300px;
+  width: 700px;
+  height: 150px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.white-box {
+    background-color: color: blue;
+    width: 2000x;
+    height: 300px;
+    margin-top: -150px;
+    color
+}
+</style>
+<body>
+<!-- partial:index.partial.html -->
+<div>
+    <div class="a">
+        <div class="b" >
+             <p style="position: absolute; left: 80%; font-size: 30px; margin-top: 10px;">2's</p>
+        </div>
+        <div class="d">
+             <p style="position: absolute; left: 80%; font-size: 30px; margin-top: 10px;">3's</p>
+        </div>
+		<div class="e">
+             <p style="position: absolute; left: 30%; font-size: 30px; margin-top: 10px;">tournament's</p>
+        </div>
+    </div>
+    <p id="personal"></p>
+</div>
+<!-- partial -->
+<script>
+    const personalAccounts = [];
+    const teamAccounts = [];
+
+    account = {name:"Panther", id:"76561198135636563", client:"steam"}; personalAccounts.push(account);
+    account = {name:"Panther Alt", id:"76561199041429306", client:"steam"}; personalAccounts.push(account);
+    account = {name:"FIRE", id:"ItsFirePhantom", client:"xbl"}; personalAccounts.push(account);
+    account = {name:"COLE", id:"76561198147573642", client:"steam"}; personalAccounts.push(account);
+    account = {name:"COLE ALT", id:"76561198991167223", client:"steam"}; personalAccounts.push(account);
+    account = {name:"WLVF", id:"76561199009292252", client:"steam"}; personalAccounts.push(account);
+    account = {name:"Sanzo", id:"76561198371073705", client:"steam"}; personalAccounts.push(account);
+
+    function getStats(arrayAcc) {
+        var allStats = "";
+        for(index = 0; index < arrayAcc.length; index++){ 
+            allStats += "<div class='a' style='margin-top: -150px;'><div class='b' id='div_iframe2'><iframe id='frame' src='https://rocketleague.tracker.network/rocket-league/profile/";
+            allStats += arrayAcc[index].client;
+            allStats += "/";
+            allStats += arrayAcc[index].id;
+            allStats += "/mmr?playlist=11'></iframe></div><div class='c'>";
+            allStats += "<p style='text-align:center; font-size: 30px; margin-top: 10px;'>";
+            allStats += arrayAcc[index].name;
+            allStats += "</p></div><div class='d' id='div_iframe2'><iframe id='frame' src='https://rocketleague.tracker.network/rocket-league/profile/";
+            allStats += arrayAcc[index].client;
+            allStats += "/";
+            allStats += arrayAcc[index].id;
+            allStats += "/mmr?playlist=13'></iframe></div><div class='e' id='div_iframe2'><iframe id='frame' src='https://rocketleague.tracker.network/rocket-league/profile/";
+            allStats += arrayAcc[index].client;
+            allStats += "/";
+            allStats += arrayAcc[index].id;
+            allStats += "/mmr?playlist=34'></iframe></div></div>";
+        }
+
+        allStats += "<div class='b' style='margin-top: -150px; width: 300px; height: 150px; border: 130px solid white;'><p></p></div><div class='d' style='margin-top: -150px; width: 300px; height: 150px; border: 130px solid white;'><p></p></div><div class='e' style='margin-top: -150px; width: 300px; height: 150px; border: 130px solid white;'><p></p></div>";
+        return allStats;
+    }
+
+    document.getElementById("personal").innerHTML = getStats(personalAccounts);
+</script>
+
+</body>
+</html>

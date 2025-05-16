@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Raid Calc</title>
+
+
+</head>
+<style>
+    {
+    box-sizing: border-box;
+}
+video {
+    width: 100%;
+    height: auto;
+}
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+[class*="col-"] {
+    float:left;
+    margin-left: 0%;
+    margin-bottom: 1%;
+    padding: 0px;
+    width: 100%;
+    border-style: groove;
+    border-width: 0px;
+}
+
+@media only screen and (min-width: 400px) {
+    .col-p-1 {width: 8.33%;}
+    .col-p-2 {width: 16.66%;}
+    .col-p-3 {width: 25%;}
+    .col-p-4 {width: 33.33%;}
+    .col-p-5 {width: 41.66%;}
+    .col-p-6 {width: 50%;}
+    .col-p-7 {width: 58.33%;}
+    .col-p-8 {width: 66.66%;}
+    .col-p-9 {width: 75%;}
+    .col-p-10 {width: 83.33%;}
+    .col-p-11 {width: 91.66%;}
+    .col-p-12 {width: 100%;}
+    .right {justify-content: center;}
+    .left {justify-content: center;}
+}
+
+@media only screen and (min-width: 600px) {
+    .col-m-1 {width: 8.33%;}
+    .col-m-2 {width: 16.66%;}
+    .col-m-3 {width: 25%;}
+    .col-m-4 {width: 33.33%;}
+    .col-m-5 {width: 41.66%;}
+    .col-m-6 {width: 50%;}
+    .col-m-7 {width: 58.33%;}
+    .col-m-8 {width: 66.66%;}
+    .col-m-9 {width: 75%;}
+    .col-m-10 {width: 83.33%;}
+    .col-m-11 {width: 91.66%;}
+    .col-m-12 {width: 100%;}
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    padding-bottom: 0px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+@media only screen and (min-width: 768px) {
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+}
+header {
+    background-color: grey;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+body {
+  background-color: lavender;
+  font-family: sans-serif;
+}
+#container {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 25px;
+}
+nav {
+  text-align: center;
+  padding: 15px; }
+  
+nav a {
+    font-size: 1.5em;
+    color: white;
+    font-weight: 500;
+    background-color: grey;
+    padding: 10px 20px;
+    margin: 5px 10px;
+    border-radius: 20px; }
+  
+nav a:hover {
+    background-color: lightgrey;
+    color: white; }
+
+a {
+    color: grey;
+}
+
+ul {
+    text-align:center;
+    list-style: none;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 35px;
+  height: 50px;
+}
+
+.right {
+  display: flex;
+  justify-content:flex-start;
+  align-items:center;
+  padding-left: 0px;
+  height: 50px;
+}
+    
+.label{
+    color:white;
+}
+
+.left {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-left: 35px;
+  height: 50px;
+}
+
+.button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 15px;
+  text-align: center;
+}
+  
+.button1 {background-color: grey;} /* Grey */
+</style>
+<body>
+<div class="container">
+            <div class="col-12">
+                <header>
+                    <h1>Raid Calc</h1>
+                </header>
+            </div>
+</div>
+    <!--starts data collection for inside of javascript-->     
+        <div class="center">
+            <label for="k1Attack">Knight 1 Attack:</label>
+            <input id="k1Attack" type="number" name="k1Attack" rows="4" cols="50" onblur="fieldUpdateHandler('k1Attack')" style="width:10%; height: auto; margin: 10px">
+            <label for="k1Defense"> Defense:</label>
+            <input id="k1Defense" type="number" name="k1Defense" rows="4" cols="50" onblur="fieldUpdateHandler('k1Defense')" style="width:10%; height: auto; margin: 10px">
+            <label for="k1HP"> HP:</label>
+            <input id="k1HP" type="number" name="k1HP" rows="4" cols="50" onblur="fieldUpdateHandler('k1HP')" style="width:10%; height: auto; margin: 10px">
+            <label for="k1Stun"> Stun %:</label>
+            <input id="k1Stun" type="number" name="k1Stun" rows="4" cols="50" onblur="fieldUpdateHandler('k1Stun')" style="width:10%; height: auto; margin: 10px">
+            <select name="k1element1" id="k1element1" onblur="fieldUpdateHandler('k1element1')">
+                <option value="fire">Fire</option>
+                <option value="spirit">Spirit</option>
+                <option value="earth">Earth</option>
+                <option value="air">Air</option>
+                <option value="water">Water</option>
+                <option value="star">Starmetal</option>
+            </select>
+            <select name="k1element2" id="k1element2" onblur="fieldUpdateHandler('k1element2')">
+                <option value="fire">Fire</option>
+                <option value="spirit">Spirit</option>
+                <option value="earth">Earth</option>
+                <option value="air">Air</option>
+                <option value="water">Water</option>
+                <option value="star">Starmetal</option>
+            </select>
+        </div>
+        
+        <div class="center">
+            <label for="k2Attack">Knight 2 Attack:</label>
+            <input id="k2Attack" type="number" name="k2Attack" rows="4" cols="50" onblur="fieldUpdateHandler('k2Attack')" style="width:10%; height: auto; margin: 10px">
+            <label for="k2Defense"> Defense:</label>
+            <input id="k2Defense" type="number" name="k2Defense" rows="4" cols="50" onblur="fieldUpdateHandler('k2Defense')" style="width:10%; height: auto; margin: 10px">
+            <label for="k2HP"> HP:</label>
+            <input id="k2HP" type="number" name="k2HP" rows="4" cols="50" onblur="fieldUpdateHandler('k2HP')" style="width:10%; height: auto; margin: 10px">
+            <label for="k2Stun"> Stun %:</label>
+            <input id="k2Stun" type="number" name="k2Stun" rows="4" cols="50" onblur="fieldUpdateHandler('k2Stun')" style="width:10%; height: auto; margin: 10px">
+            <select name="k2element1" id="k2element1" onblur="fieldUpdateHandler('k2element1')">
+                <option value="fire">Fire</option>
+                <option value="spirit">Spirit</option>
+                <option value="earth">Earth</option>
+                <option value="air">Air</option>
+                <option value="water">Water</option>
+                <option value="star">Starmetal</option>
+            </select>
+            <select name="k2element2" id="k2element2" onblur="fieldUpdateHandler('k2element2')">
+                <option value="fire">Fire</option>
+                <option value="spirit">Spirit</option>
+                <option value="earth">Earth</option>
+                <option value="air">Air</option>
+                <option value="water">Water</option>
+                <option value="star">Starmetal</option>
+            </select>
+        </div>
+        
+        <div class="center">
+            <label for="k3Attack">Knight 3 Attack:</label>
+            <input id="k3Attack" type="number" name="k3Attack" rows="4" cols="50" onblur="fieldUpdateHandler('k3Attack')" style="width:10%; height: auto; margin: 10px">
+            <label for="k3Defense"> Defense:</label>
+            <input id="k3Defense" type="number" name="k3Defense" rows="4" cols="50" onblur="fieldUpdateHandler('k3Defense')" style="width:10%; height: auto; margin: 10px">
+            <label for="k3HP"> HP:</label>
+            <input id="k3HP" type="number" name="k3HP" rows="4" cols="50" onblur="fieldUpdateHandler('k3HP')" style="width:10%; height: auto; margin: 10px">
+            <label for="k3Stun"> Stun %:</label>
+            <input id="k3Stun" type="number" name="k3Stun" rows="4" cols="50" onblur="fieldUpdateHandler('k3Stun')" style="width:10%; height: auto; margin: 10px">
+            <select name="k3element1" id="k3element1" onblur="fieldUpdateHandler('k3element1')">
+                <option value="fire">Fire</option>
+                <option value="spirit">Spirit</option>
+                <option value="earth">Earth</option>
+                <option value="air">Air</option>
+                <option value="water">Water</option>
+                <option value="star">Starmetal</option>
+            </select>
+            <select name="k3element2" id="k3element2" onblur="fieldUpdateHandler('k3element2')">
+                <option value="fire">Fire</option>
+                <option value="spirit">Spirit</option>
+                <option value="earth">Earth</option>
+                <option value="air">Air</option>
+                <option value="water">Water</option>
+                <option value="star">Starmetal</option>
+            </select>
+        </div>
+    </div>
+    
+    <!--starts data collection for pets-->   
+    <div class='col-12 col-m-12 col-p-12'>
+        <div class="center">
+            <label for="petAttack">Pet Attack:</label>
+            <input id="petAttack" type="number" name="petAttack" rows="4" cols="50" onblur="fieldUpdateHandler('petAttack')" style="width:10%; height: auto; margin: 10px">
+             <select name="petElement" id="petElement" onblur="fieldUpdateHandler('petElement')" style="margin: 5px">
+                <option value="fire">Fire</option>
+                <option value="spirit">Spirit</option>
+                <option value="earth">Earth</option>
+                <option value="air">Air</option>
+                <option value="water">Water</option>
+            </select>
+        </div>
+        <div class="center">
+            <select name="petAbility" id="petAbility" onblur="fieldUpdateHandler('petAbility')" style="margin: 5px">
+                <option value="shatter">Shatter Shield</option>
+            </select>
+            <label for="petAbilityValue">Pet Ability Value:</label>
+            <input id="petAbilityValue" type="number" name="petAbilityValue" rows="4" cols="50" onblur="fieldUpdateHandler('petAbilityValue')" style="width:10%; height: auto; margin: 10px">
+            <label for="petAbilityValueBonus">Pet Ability Bonus:</label>
+            <input id="petAbilityValueBonus" type="number" name="petAbilityValueBonus" value="0" rows="4" cols="50" onblur="fieldUpdateHandler('petAbilityValueBonus')" style="width:10%; height: auto; margin: 10px">
+        </div>
+        <div class="center">
+            <label for="bossElements">Boss Elements:</label>
+            <select name="bossElement1" id="bossElement1" onblur="fieldUpdateHandler('bossElement1')" style="margin: 5px">
+                <option value="fire">Fire</option>
+                <option value="spirit">Spirit</option>
+                <option value="earth">Earth</option>
+                <option value="air">Air</option>
+                <option value="water">Water</option>
+            </select>
+            <select name="bossElement2" id="bossElement2" onblur="fieldUpdateHandler('bossElement2')" style="margin: 5px">
+                <option value="fire">Fire</option>
+                <option value="spirit">Spirit</option>
+                <option value="earth">Earth</option>
+                <option value="air">Air</option>
+                <option value="water">Water</option>
+            </select>
+        </div>
+    </div>
+    <!--ends data collection for inside of javascript-->   
+    
+    <div class="center">
+        <button class="button button1" onclick="runCalculations()">Calculate</button>
+    </div>
+    <br><br><br><br><br><br>
+    <div class="center">
+        <p id="results"></p>
+    </div>
+<script>
+    //starts global variables
+    //knight 1
+    var g_k1Attack = 0;
+    var g_k1Defense = 0;
+    var g_k1HP = 0;
+    var g_k1Stun = 0;
+    var g_k1element1 = "";
+    var g_k1element2 = "";
+    
+    //knight 2
+    var g_k2Attack = 0;
+    var g_k2Defense = 0;
+    var g_k2HP = 0;
+    var g_k2Stun = 0;
+    var g_k2element1 = "";
+    var g_k2element2 = "";
+    
+    //knight 3
+    var g_k3Attack = 0;
+    var g_k3Defense = 0;
+    var g_k3HP = 0;
+    var g_k3Stun = 0;
+    var g_k3element1 = "";
+    var g_k3element2 = "";
+    
+    //pet
+    var g_petAttack = 0;
+    var g_petAbility = 0;
+    var g_petAbilityValue = 0;
+    var g_petAbilityValueBonus = 0;
+    var g_petElement = "";
+    
+    //bossElements
+    var g_bossElement1 = "";
+    var g_bossElement2 = "";
+    
+    //built in rates
+    var g_petMissRate = 10;
+    var g_bossMissRate = 5;
+    var g_knightMissRate = 10;
+    
+    var g_petCritRate = 15;
+    var g_bossCritRate = 25;//changed this to be a %
+    var g_knightCritRate = 15;
+    
+    var g_knightInBetween = 164;
+    var g_petInBetween = 197.5;
+    var g_numberToAverage = 1000;
+    var g_raidBossesAttack = [6500,7300,7900,9500,15900];
+    var g_raidBossesDefense = [1900,1900,2190,2600,2500];
+    var g_raidBossesHP = [10000000,100000000,9000000,25000000,12500000];
+    var g_raidBossesWinBonus = [13750000,100000000,35000000,100000000,75000000];
+    var g_raidBossesAdjustedPercent = [107.1,107.1,104.5,104,105];
+    
+    var g_allElements = ["fire","spirit","earth","air","water","fire"]
+    
+    //ends global variables
+    
+    //function fieldUpdateHandler is called to save the data from each input after they click off the field.
+    function fieldUpdateHandler(field){
+        var fieldValue = document.getElementById(field).value;
+        
+        //knight 1
+        if(field == "k1Attack"){
+            g_k1Attack = fieldValue;
+            console.log(fieldValue);
+        }
+        if(field == "k1Defense"){
+            g_k1Defense = fieldValue;
+            console.log(fieldValue);
+        }
+        if(field == "k1HP"){
+            g_k1HP = fieldValue;
+            console.log(fieldValue);
+        }
+        if(field == "k1Stun"){
+            g_k1Stun = fieldValue;
+            console.log(fieldValue);
+        }
+        if(field == "k1element1"){
+            g_k1element1 = fieldValue;
+            console.log(fieldValue);
+        }
+        if(field == "k1element2"){
+            g_k1element2 = fieldValue;
+            console.log(fieldValue);
+        }
+        
+        //knight 2
+        if(field == "k2Attack"){
+            g_k2Attack = fieldValue;
+            console.log(fieldValue);
+        }
+        if(field == "k2Defense"){
+            g_k2Defense = fieldValue;
+            console.log(fieldValue);
+        }
+        if(field == "k2HP"){
+            g_k2HP = fieldValue;
+            console.log(fieldValue);
+        }
+        if(field == "k2Stun"){
+            g_k2Stun = fieldValue;
+            console.log(fieldValue);
+        }
+        if(field == "k2element1"){
+            g_k2element1 = fieldValue;
+            console.log(fieldValue);
+        }
+        if(field == "k2element2"){
+            g_k2element2 = fieldValue;
+            console.log(fieldValue);
+        }
+        
+        //knight 3
+        if(field == "k3Attack"){
+            g_k3Attack = fieldValue;
+            console.log(fieldValue);
+        }
+        if(field == "k3Defense"){
+            g_k3Defense = fieldValue;
+            console.log(fieldValue);
+        }
+        if(field == "k3HP"){
+            g_k3HP = fieldValue;
+            console.log(fieldValue);
+        }
+        if(field == "k3Stun"){
+            g_k3Stun = fieldValue;
+            console.log(fieldValue);
+        }
+        if(field == "k3element1"){
+            g_k3element1 = fieldValue;
+            console.log(fieldValue);
+        }
+        if(field == "k3element2"){
+            g_k3element2 = fieldValue;
+            console.log(fieldValue);
+        }
+        
+        //pet ability
+        if(field == "petAttack"){
+            g_petAttack = fieldValue;
+            console.log(fieldValue);
+        }
+        if(field == "petAbility"){
+            g_petAbility = fieldValue;
+            console.log(fieldValue);
+        }
+        if(field == "petAbilityValue"){
+            g_petAbilityValue = fieldValue;
+            console.log(fieldValue);
+        }
+        if(field == "petAbilityValueBonus"){
+            g_petAbilityValueBonus = fieldValue;
+            console.log(fieldValue);
+        }
+        if(field == "petElement"){
+            g_petElement = fieldValue;
+            console.log(fieldValue);
+        }
+        if(field == "bossElement1"){
+            g_bossElement1 = fieldValue;
+            console.log(fieldValue);
+        }
+        if(field == "bossElement2"){
+            g_bossElement2 = fieldValue;
+            console.log(fieldValue);
+        }
+        
+    }
+    
+    function runCalculations(){
+        
+        console.log(g_k1Attack);
+        console.log(g_k1Defense);
+        console.log(g_k1HP);
+        console.log(g_k1Stun);
+        console.log(g_k1element1);
+        console.log(g_k1element2);
+        console.log(g_k2Attack);
+        console.log(g_k2Defense);
+        console.log(g_k2HP);
+        console.log(g_k2Stun);
+        console.log(g_k2element1);
+        console.log(g_k2element2);
+        console.log(g_k3Attack);
+        console.log(g_k3Defense);
+        console.log(g_k3HP);
+        console.log(g_k3Stun);
+        console.log(g_k3element1);
+        console.log(g_k3element2);
+        console.log(g_petAttack);
+        console.log(g_petAbility);
+        console.log(g_petAbilityValue);
+        console.log(g_petAbilityValueBonus);
+        console.log(g_petElement);
+        console.log(g_bossElement1);
+        console.log(g_bossElement2);
+        
+        var tempHitScore = 0;
+        var sumHits = 0;
+        var countHits = 0;
+        var html = "";
+        var tempResult = 0;
+        var levelhtml = 0;
+        var levelString = "";
+        //var averages = [0,0,0,0,0];
+        for(var level = 3; level<8; level++){
+            tempResult = calculateAverage(level-3); 
+            levelString = levelhtml.toString();
+            html+= "<div class='center'><h2 style=text-align:center>Level " + level + ": ";
+            console.log(tempResult);
+            html+= tempResult.toFixed(0);
+            html+= "</h2></div>";
+        }
+        document.getElementById("results").innerHTML = html;
+    }
+    
+    function calculateAverage(level){
+        var petMultiplier = calculatePetMultiplier();//get pet multiplier
+        var knightMultiplier1 = calculateKnightMultiplier(g_k1element1,g_k1element2);//get knight multiplier
+        var knightMultiplier2 = calculateKnightMultiplier(g_k2element1,g_k2element2);//get knight multiplier
+        var knightMultiplier3 = calculateKnightMultiplier(g_k3element1,g_k3element2);//get knight multiplier
+        var bossMultiplier1 = calculateBossMultiplier(g_k1element1,g_k1element2);//get boss multiplier
+        var bossMultiplier2 = calculateBossMultiplier(g_k2element1,g_k2element2);//get boss multiplier
+        var bossMultiplier3 = calculateBossMultiplier(g_k3element1,g_k3element2);//get boss multiplier
+        var petHitDamage = calculatePetHit(petMultiplier,level);//get pet hit damage
+        var knightHitDamage1 = calculateKnightHit(g_k1Attack,knightMultiplier1,level);//get knight hit damage
+        var knightHitDamage2 = calculateKnightHit(g_k2Attack,knightMultiplier2,level);//get knight hit damage
+        var knightHitDamage3 = calculateKnightHit(g_k3Attack,knightMultiplier3,level);//get knight hit damage
+        var bossHitDamage1 = calculateBossHit(g_k1Defense,bossMultiplier1,level);//get boss hit damage
+        var bossHitDamage2 = calculateBossHit(g_k2Defense,bossMultiplier2,level);//get boss hit damage
+        var bossHitDamage3 = calculateBossHit(g_k3Defense,bossMultiplier3,level);//get boss hit damage
+        var shatterAmount1 = calculateShieldAmount(g_k1element1,g_k1element2,g_petElement)
+        var shatterAmount2 = calculateShieldAmount(g_k2element1,g_k2element2,g_petElement)
+        var shatterAmount3 = calculateShieldAmount(g_k3element1,g_k3element2,g_petElement)
+        var knightHP = 0;//initiates hp
+        var knightDamage = 0;//initiates knight damage
+        var bossDamage = 0;//initiates boss damage
+        var bossHP = 0;//initiates boss hp
+        var knightEnergyAmount = 0;//initiates knight energy
+        var petEnergyAmount = 100;//initiates pet energy
+        var shieldAmount = 0;//initiates shield
+        //var bossEnergyAmount = 0;//initiates boss energy
+        var healAmount = 0;
+        var knightEnergyRegen = 20;
+        var petEnergyRegen = 15;
+        var hitScore = 0;
+        var hitCount = 0;
+        var totalScore = 0;
+        var averageScore = 0;
+        var bossAlive = true;
+        var stunRate = 0.0;
+        var countStun = 0;
+        var countMiss = 0;
+        var countTotal = 0;
+        var petHit = 0;
+        var knightHit = 0;
+        var bossHit = 0;
+        //var bossEnergyRegen = 20;
+        
+        for(var raidIteration = 0;raidIteration<g_numberToAverage;raidIteration++){//run all iterations on the level
+            knightHP = g_k1HP;
+            knightDamage = knightHitDamage1;
+            bossDamage = bossHitDamage1;
+            bossHP = g_raidBossesHP[level];
+            healAmount = shatterAmount1;
+            bossAlive = true;
+            stunRate = g_k1Stun;
+            hitCount++;
+            console.log(healAmount);
+            //console.log("made it here");
+            //console.log(knightHP);
+            //console.log(bossAlive);
+            //knight 1
+            while(knightHP > 0 && bossAlive == true){
+                //knightstuff
+                petHit = 0;
+                knightHit = 0;
+                bossHit = 0;
+                
+                if(knightEnergyAmount >= 100){
+                    //console.log("active");
+                    knightHit += knightDamage * 3.25;
+                    knightEnergyAmount = 0;
+                } else {
+                    //console.log("wave");
+                    if(g_knightMissRate <= Math.floor(Math.random() * 101)){//checks if miss
+                        if(g_knightCritRate >= Math.floor(Math.random() * 101)){//checks if crit
+                            //console.log("crit");
+                            knightHit += knightDamage * 1.5;
+                        } else{
+                            //console.log("reg");
+                            knightHit += knightDamage;
+                        }
+                    }
+                }
+                //console.log("in while 1");
+                if(hitScore >= bossHP){
+                    bossAlive = false;
+                    break;
+                }
+                
+                hitScore += knightHit;
+                //pet stuff
+                if(petEnergyAmount >= 200){
+                    petEnergyAmount = 0;
+                    shieldAmount = healAmount;
+                    petHit += petHitDamage * 2;
+                } else {
+                    if(g_petMissRate <= Math.floor(Math.random() * 101)){//checks if miss
+                        if(g_petCritRate >= Math.floor(Math.random() * 101)){//checks if crit
+                            petHit += petHitDamage * 2;
+                        } else{
+                            petHit += petHitDamage;
+                        }
+                    }
+                }
+                
+                if(hitScore >= bossHP){
+                    bossAlive = false;
+                    break;
+                }
+                
+                hitScore += petHit;
+                //boss stuff
+                //no boss crits, so didn't add in. if needed can add here
+                if(stunRate <= Math.floor(Math.random() * 101)){//checks if stunned
+                    if(g_bossMissRate <= Math.floor(Math.random() * 101)){//checks if miss
+                        if(g_bossCritRate >= Math.floor(Math.random() * 101)){//checks if crit
+                            bossHit += bossDamage * 1.5;
+                        } else{
+                            bossHit += bossDamage;
+                        }
+                    }else{
+                        //console.log("miss");
+                        countMiss++;
+                    }
+                }else{
+                    //console.log("stun");
+                    countStun++;
+                }
+                countTotal++;
+                //console.log("shield" + shieldAmount);
+                //console.log("boss hit" + bossDamagehit);
+                if(shieldAmount > bossDamage){
+                    shieldAmount = shieldAmount - bossHit;
+                } else{
+                    bossHit = bossHit - shieldAmount;
+                    shieldAmount = 0;
+                    knightHP = knightHP - bossHit;
+                }
+                //console.log("hp" + knightHP);
+                knightEnergyAmount += knightEnergyRegen;
+                petEnergyAmount += petEnergyRegen;
+                //console.log(hitScore);
+            }
+            //console.log("missrate" + countMiss/countTotal + "stunRate" + countStun/countTotal);
+            //console.log(hitScore);
+            //knight2
+            knightHP = g_k2HP;
+            knightDamage = knightHitDamage2;
+            bossDamage = bossHitDamage2;
+            stunRate = g_k2Stun;
+            healAmount = shatterAmount2;
+            console.log(healAmount);
+            
+            
+            while(knightHP > 0 && bossAlive == true){
+                //knightstuff
+                petHit = 0;
+                knightHit = 0;
+                bossHit = 0;
+                
+                if(knightEnergyAmount >= 100){
+                    //console.log("active");
+                    knightHit += knightDamage * 3.25;
+                    knightEnergyAmount = 0;
+                } else {
+                    //console.log("wave");
+                    if(g_knightMissRate <= Math.floor(Math.random() * 101)){//checks if miss
+                        if(g_knightCritRate >= Math.floor(Math.random() * 101)){//checks if crit
+                            //console.log("crit");
+                            knightHit += knightDamage * 1.5;
+                        } else{
+                            //console.log("reg");
+                            knightHit += knightDamage;
+                        }
+                    }
+                }
+                //console.log("in while 1");
+                if(hitScore >= bossHP){
+                    bossAlive = false;
+                    break;
+                }
+                
+                hitScore += knightHit;
+                //pet stuff
+                if(petEnergyAmount >= 200){
+                    petEnergyAmount = 0;
+                    shieldAmount = healAmount;
+                    petHit += petHitDamage * 2;
+                } else {
+                    if(g_petMissRate <= Math.floor(Math.random() * 101)){//checks if miss
+                        if(g_petCritRate >= Math.floor(Math.random() * 101)){//checks if crit
+                            petHit += petHitDamage * 2;
+                        } else{
+                            petHit += petHitDamage;
+                        }
+                    }
+                }
+                
+                if(hitScore >= bossHP){
+                    bossAlive = false;
+                    break;
+                }
+                
+                hitScore += petHit;
+                //boss stuff
+                //no boss crits, so didn't add in. if needed can add here
+                if(stunRate <= Math.floor(Math.random() * 101)){//checks if stunned
+                    if(g_bossMissRate <= Math.floor(Math.random() * 101)){//checks if miss
+                        if(g_bossCritRate >= Math.floor(Math.random() * 101)){//checks if crit
+                            bossHit += bossDamage * 1.5;
+                        } else{
+                            bossHit += bossDamage;
+                        }
+                    }else{
+                        //console.log("miss");
+                        countMiss++;
+                    }
+                }else{
+                    //console.log("stun");
+                    countStun++;
+                }
+                countTotal++;
+                //console.log("shield" + shieldAmount);
+                //console.log("boss hit" + bossDamagehit);
+                if(shieldAmount > bossDamage){
+                    shieldAmount = shieldAmount - bossHit;
+                } else{
+                    bossHit = bossHit - shieldAmount;
+                    shieldAmount = 0;
+                    knightHP = knightHP - bossHit;
+                }
+                //console.log("hp" + knightHP);
+                knightEnergyAmount += knightEnergyRegen;
+                petEnergyAmount += petEnergyRegen;
+                //console.log(hitScore);
+            }
+           // console.log("missrate" + countMiss/countTotal + "stunRate" + countStun/countTotal);
+            //console.log(hitScore);
+            //knight3
+            knightHP = g_k3HP;
+            knightDamage = knightHitDamage3;
+            bossDamage = bossHitDamage3;
+            stunRate = g_k3Stun;
+            healAmount = shatterAmount3;
+            console.log(healAmount);
+            
+            while(knightHP > 0 && bossAlive == true){
+                //knightstuff
+                petHit = 0;
+                knightHit = 0;
+                bossHit = 0;
+                
+                if(knightEnergyAmount >= 100){
+                    //console.log("active");
+                    knightHit += knightDamage * 3.25;
+                    knightEnergyAmount = 0;
+                } else {
+                    //console.log("wave");
+                    if(g_knightMissRate <= Math.floor(Math.random() * 101)){//checks if miss
+                        if(g_knightCritRate >= Math.floor(Math.random() * 101)){//checks if crit
+                            //console.log("crit");
+                            knightHit += knightDamage * 1.5;
+                        } else{
+                            //console.log("reg");
+                            knightHit += knightDamage;
+                        }
+                    }
+                }
+                //console.log("in while 1");
+                if(hitScore >= bossHP){
+                    bossAlive = false;
+                    break;
+                }
+                
+                hitScore += knightHit;
+                //pet stuff
+                if(petEnergyAmount >= 200){
+                    petEnergyAmount = 0;
+                    shieldAmount = healAmount;
+                    petHit += petHitDamage * 2;
+                } else {
+                    if(g_petMissRate <= Math.floor(Math.random() * 101)){//checks if miss
+                        if(g_petCritRate >= Math.floor(Math.random() * 101)){//checks if crit
+                            petHit += petHitDamage * 2;
+                        } else{
+                            petHit += petHitDamage;
+                        }
+                    }
+                }
+                
+                if(hitScore >= bossHP){
+                    bossAlive = false;
+                    break;
+                }
+                
+                hitScore += petHit;
+                //boss stuff
+                //no boss crits, so didn't add in. if needed can add here
+                if(stunRate <= Math.floor(Math.random() * 101)){//checks if stunned
+                    if(g_bossMissRate <= Math.floor(Math.random() * 101)){//checks if miss
+                        if(g_bossCritRate >= Math.floor(Math.random() * 101)){//checks if crit
+                            bossHit += bossDamage * 1.5;
+                        } else{
+                            bossHit += bossDamage;
+                        }
+                    }else{
+                        //console.log("miss");
+                        countMiss++;
+                    }
+                }else{
+                    //console.log("stun");
+                    countStun++;
+                }
+                countTotal++;
+                //console.log("shield" + shieldAmount);
+                //console.log("boss hit" + bossDamagehit);
+                if(shieldAmount > bossDamage){
+                    shieldAmount = shieldAmount - bossHit;
+                } else{
+                    bossHit = bossHit - shieldAmount;
+                    shieldAmount = 0;
+                    knightHP = knightHP - bossHit;
+                }
+                //console.log("hp" + knightHP);
+                knightEnergyAmount += knightEnergyRegen;
+                petEnergyAmount += petEnergyRegen;
+                //console.log(hitScore);
+            }
+            //console.log("missrate" + countMiss/countTotal + "stunRate" + countStun/countTotal);
+            //console.log(hitScore);
+            totalScore += hitScore;
+            hitScore = 0;
+        }
+        console.log(totalScore);
+        console.log(hitCount);
+        return totalScore/hitCount;
+    }
+    
+    function calculateShieldAmount(element1,element2,petElement){
+        var abilityValue = g_petAbilityValue;
+        var abilityBonus = g_petAbilityValueBonus;
+        var shieldAmount = 0;
+        shieldAmount += parseInt(abilityValue)
+        
+        var addFlag = false;
+        if(petElement == element1){
+            addFlag = true;
+        }
+        if(petElement == element2){
+            addFlag = true;
+        }
+        if(addFlag == true){
+            shieldAmount += parseInt(abilityBonus);
+        }
+
+        return shieldAmount;
+    }
+    
+    function calculatePetMultiplier(){
+        var multiplier = 1.0;
+        for(var index = 1; index < g_allElements.length; index++){
+            if(g_petElement == g_allElements[index]){
+                if(g_bossElement1 == g_allElements[index+1] || g_bossElement2 == g_allElements[index+1]){
+                    multiplier += .5;
+                }
+            }
+        }
+        return multiplier;
+    }
+    
+    function calculateKnightMultiplier(element1,element2){
+        var multiplier = 1.0;
+        for(var index = 1; index < g_allElements.length; index++){
+            if(element1 == "star"){
+                multiplier +=.5;
+                break;
+            }else{
+                if(element1 == g_allElements[index]){
+                    if(g_bossElement1 == g_allElements[index+1] || g_bossElement2 == g_allElements[index+1]){
+                        multiplier += .5;
+                    }
+                }
+            }
+        }
+        for(var index = 1; index < g_allElements.length; index++){
+            if(element2 == "star"){
+                multiplier +=.5;
+                break;
+            }else{
+                if(element2 == g_allElements[index]){
+                    if(g_bossElement1 == g_allElements[index+1] || g_bossElement2 == g_allElements[index+1]){
+                        multiplier += .5;
+                    }
+                }
+            }
+        }
+        return multiplier;
+    }
+    
+    function calculateBossMultiplier(element1,element2){
+        var multiplier = 1.0;
+        for(var index = 1; index < g_allElements.length; index++){
+            if(g_bossElement1 == g_allElements[index]){
+                if(element1 == g_allElements[index+1] || element2 == g_allElements[index+1]){
+                    multiplier += .5;
+                }
+            } //automatically doesn't affect starmetal.
+        }
+        for(var index = 1; index < g_allElements.length; index++){
+            if(g_bossElement2 == g_allElements[index]){
+                if(element1 == g_allElements[index+1] || element2 == g_allElements[index+1]){
+                    multiplier += .5;
+                }
+            }
+        }
+        return multiplier;
+    }
+    
+    function calculatePetHit(petMultiplier,level){
+        var ratio = g_petAttack/g_raidBossesDefense[level];
+        var hit = ratio * petMultiplier * g_petInBetween;
+        return hit;
+    }
+    
+    function calculateKnightHit(knightAttack,knightMultiplier,level){
+        var ratio = knightAttack/g_raidBossesDefense[level];
+        var hit = ratio * knightMultiplier * g_knightInBetween;
+        return hit;
+    }
+    
+    function calculateBossHit(knightDefense,bossMultiplier,level){
+        var ratio = g_raidBossesAttack[level]/knightDefense;
+        var hit = ratio * bossMultiplier * g_raidBossesAdjustedPercent[level];
+        return hit;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,381 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>DynamicRL 3s</title>
+    <link href="styles.css" rel="stylesheet" type="text/css" />
+</head>
+<style>
+{
+    box-sizing: border-box;
+}
+
+video {
+    width: 100%;
+    height: auto;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+[class*="col-"] {
+    float: left;
+    margin-left: 0%;
+    margin-bottom: -1%;
+    padding: 0px;
+    width: 100%;
+    border-style: groove;
+    border-width: 0px;
+}
+
+@media only screen and (min-width: 400px) {
+    .col-p-1 {
+        width: 8.33%;
+    }
+
+    .col-p-2 {
+        width: 16.66%;
+    }
+
+    .col-p-3 {
+        width: 25%;
+    }
+
+    .col-p-4 {
+        width: 33.33%;
+    }
+
+    .col-p-5 {
+        width: 41.66%;
+    }
+
+    .col-p-6 {
+        width: 50%;
+    }
+
+    .col-p-7 {
+        width: 58.33%;
+    }
+
+    .col-p-8 {
+        width: 66.66%;
+    }
+
+    .col-p-9 {
+        width: 75%;
+    }
+
+    .col-p-10 {
+        width: 83.33%;
+    }
+
+    .col-p-11 {
+        width: 91.66%;
+    }
+
+    .col-p-12 {
+        width: 100%;
+    }
+
+    .right {
+        justify-content: center;
+    }
+
+    .left {
+        justify-content: center;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .col-m-1 {
+        width: 8.33%;
+    }
+
+    .col-m-2 {
+        width: 16.66%;
+    }
+
+    .col-m-3 {
+        width: 25%;
+    }
+
+    .col-m-4 {
+        width: 33.33%;
+    }
+
+    .col-m-5 {
+        width: 41.66%;
+    }
+
+    .col-m-6 {
+        width: 50%;
+    }
+
+    .col-m-7 {
+        width: 58.33%;
+    }
+
+    .col-m-8 {
+        width: 66.66%;
+    }
+
+    .col-m-9 {
+        width: 75%;
+    }
+
+    .col-m-10 {
+        width: 83.33%;
+    }
+
+    .col-m-11 {
+        width: 91.66%;
+    }
+
+    .col-m-12 {
+        width: 100%;
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    padding-bottom: 0px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media only screen and (min-width: 768px) {
+    .col-1 {
+        width: 8.33%;
+    }
+
+    .col-2 {
+        width: 16.66%;
+    }
+
+    .col-3 {
+        width: 25%;
+    }
+
+    .col-4 {
+        width: 33.33%;
+    }
+
+    .col-5 {
+        width: 41.66%;
+    }
+
+    .col-6 {
+        width: 50%;
+    }
+
+    .col-7 {
+        width: 58.33%;
+    }
+
+    .col-8 {
+        width: 66.66%;
+    }
+
+    .col-9 {
+        width: 75%;
+    }
+
+    .col-10 {
+        width: 83.33%;
+    }
+
+    .col-11 {
+        width: 91.66%;
+    }
+
+    .col-12 {
+        width: 100%;
+    }
+}
+
+header {
+    background-color: grey;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+body {
+    background-color: lavender;
+    font-family: sans-serif;
+}
+
+#container {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+nav {
+    text-align: center;
+    padding: 15px;
+}
+
+    nav a {
+        font-size: 1.5em;
+        color: white;
+        font-weight: 500;
+        background-color: grey;
+        padding: 10px 20px;
+        margin: 0px 0px;
+        border-radius: 20px;
+    }
+
+        nav a:hover {
+            background-color: lightgrey;
+            color: white;
+        }
+
+a {
+    color: black;
+}
+
+a:hover {
+    color: grey;
+}
+
+ul {
+    text-align: center;
+    list-style: none;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 35px;
+    height: 50px;
+}
+
+.right {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 0px;
+    height: 50px;
+}
+
+.left {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-left: 35px;
+    height: 50px;
+}
+
+.button {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.button1 {
+    background-color: grey;
+}
+/* Grey */
+#div_iframe2 {
+    height: 150px;
+    width: 100%;
+    overflow: hidden;
+}
+
+#div_iframe3 {
+    height: 165px;
+    width: 40%;
+    overflow: hidden;
+}
+
+#frame {
+    border: 0px;
+    width: 105%;
+    height: 1000%; /* 10x the div height to embrace the whole page */
+    margin-top: -1170px;
+    margin-left: -20px;
+}
+</style>
+<body>
+    <div class="container">
+        <div class="col-12">
+            <nav>
+                <a href="2s.html">2's</a>
+                <a href="3s.html">3's</a>
+                <a href="tournament.html">Tournament</a>
+                <a href="RocketLeagueStats.html">OldVersion</a>
+            </nav>
+        </div>
+    </div>
+    <p id='Threes'></p>
+
+    <script>
+        const personalAccounts = [];
+const teamAccounts = [];
+
+account = { name: "Fortiethbuckle8", id: "76561198135636563", client: "steam" }; personalAccounts.push(account);
+account = { name: "Keyboardrebel", id: "76561198816114530", client: "steam" }; personalAccounts.push(account);
+account = { name: "Feedmemoi", id: "76561198363142506", client: "steam" }; personalAccounts.push(account);
+account = { name: "Keyboardxilo", id: "76561199043955764", client: "steam" }; personalAccounts.push(account);
+account = { name: "Meepmeepxilo", id: "76561199041429306", client: "steam" }; personalAccounts.push(account);
+account = { name: "XiloPlays", id: "76561199046539900", client: "steam" }; personalAccounts.push(account);
+account = { name: "meepPanther", id: "76561199054654929", client: "steam" }; personalAccounts.push(account);
+account = { name: "n7rocksss", id: "76561199058071833", client: "steam" }; personalAccounts.push(account);
+account = { name: "GENGAR Only", id: "GENGAR%20Only", client: "epic", email: "pantherhor6@gmail.com" }; personalAccounts.push(account);
+account = { name: "ItzMePeng", id: "ItzMePenguinooo", client: "epic", email: "pantherhor7@gmail.com" }; personalAccounts.push(account);
+account = { name: "ItzMeWuthy", id: "ItzMeWuthy", client: "epic", email: "pantherhor8@gmail.com" }; personalAccounts.push(account);
+account = { name: "ItzMeFir", id: "ItzMeFir", client: "epic", email: "pantherhor5@gmail.com" }; personalAccounts.push(account);
+account = { name: "ItzMeSubbb", id: "ItzMeSubbb", client: "epic", email: "pantherhoreu@gmail.com" }; personalAccounts.push(account);
+account = { name: "ItsWuthy2", id: "ItsWuthy2", client: "epic", email: "p.antherhoreu@gmail.com" }; personalAccounts.push(account);
+account = { name: "MeepPanther", id: "MeepPanther", client: "epic", email: "pa.ntherhoreu@gmail.com" }; personalAccounts.push(account);
+account = { name: "ItsZerosHero", id: "ItsZerosHero", client: "epic", email: "pan.therhoreu@gmail.com" }; personalAccounts.push(account);
+account = { name: "NickZero52", id: "NickZero52", client: "epic", email: "pant.herhoreu@gmail.com" }; personalAccounts.push(account);
+account = { name: "ItzZachyWacky", id: "ItzZachyWacky", client: "epic", email: "panth.erhoreu@gmail.com" }; personalAccounts.push(account);
+account = { name: "MannyDaGranny", id: "MannyDaGranny", client: "epic", email: "panthe.rhoreu@gmail.com" }; personalAccounts.push(account);
+
+function getThrees(arrayItems) {
+    var allItems = "";
+    for (index = 0; index < arrayItems.length; index++) {
+        if (index % 6 == 5) {
+            allItems += "<div class='row'>";
+        }
+        allItems += "<div class='col-2 col-m-4 col-p-6' style='border-style: groove'><h2 style=text-align:center><a href='https://rocketleague.tracker.network/rocket-league/profile/";
+        allItems += arrayItems[index].client;
+        allItems += "/";
+        allItems += arrayItems[index].id;
+        allItems += "/mmr?playlist=13'>";
+        allItems += arrayItems[index].name;
+        allItems += "</a></h2><div id='div_iframe2'><iframe id='frame' src='https://rocketleague.tracker.network/rocket-league/profile/";
+        allItems += arrayItems[index].client;
+        allItems += "/";
+        allItems += arrayItems[index].id;
+        allItems += "/mmr?playlist=13'></iframe></div>";// 2's is 11, 3's is 13 and tourney is 34
+        allItems += "</div>";
+        if (index % 6 == 5) {
+            allItems += "</div>";
+        }
+    }
+    allItems += "</div>";
+    return allItems;
+}
+
+document.getElementById("Threes").innerHTML = getThrees(personalAccounts);
+    </script>
+</body>
+</html>
